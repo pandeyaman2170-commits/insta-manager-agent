@@ -1,5 +1,9 @@
 [nix]
 channel = "stable-25_05"
+packages = ["zulu"]
 
 [agent]
 expertMode = true
+
+[[ports]]
+localPort = 8080
