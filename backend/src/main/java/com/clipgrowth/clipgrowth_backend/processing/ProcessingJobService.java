@@ -7,9 +7,14 @@ import org.springframework.stereotype.Service;
 public class ProcessingJobService {
 
     private final ProcessingJobRepository processingJobRepository;
+    private final VideoAnalysisService videoAnalysisService;
 
-    public ProcessingJobService(ProcessingJobRepository processingJobRepository) {
+    public ProcessingJobService(
+        ProcessingJobRepository processingJobRepository,
+        VideoAnalysisService videoAnalysisService) {
+
         this.processingJobRepository = processingJobRepository;
+        this.videoAnalysisService = videoAnalysisService;
     }
 
     public ProcessingJob createVideoProcessingJob(Video video) {
@@ -18,7 +23,7 @@ public class ProcessingJobService {
         job.setVideo(video);
         job.setJobType("VIDEO_ANALYSIS");
         job.setStatus(ProcessingJobStatus.QUEUED);
-
+        videoAnalysisService.create(video);
         return processingJobRepository.save(job);
     }
 }

@@ -5,23 +5,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/analyses")
+@RequestMapping("/api/analysis")
 public class VideoAnalysisController {
 
-    private final VideoAnalysisRepository videoAnalysisRepository;
+    private final VideoAnalysisRepository repository;
 
-    public VideoAnalysisController(VideoAnalysisRepository videoAnalysisRepository) {
-        this.videoAnalysisRepository = videoAnalysisRepository;
+    public VideoAnalysisController(VideoAnalysisRepository repository) {
+        this.repository = repository;
     }
 
     @GetMapping
-    public List<VideoAnalysis> getAnalyses() {
-        return videoAnalysisRepository.findAll();
+    public List<VideoAnalysis> getAll() {
+        return repository.findAll();
     }
 
     @GetMapping("/{id}")
-    public VideoAnalysis getAnalysis(@PathVariable Long id) {
-        return videoAnalysisRepository.findById(id)
+    public VideoAnalysis getById(@PathVariable Long id) {
+        return repository.findById(id)
                 .orElseThrow();
     }
 }

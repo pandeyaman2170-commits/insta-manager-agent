@@ -3,18 +3,18 @@ package com.clipgrowth.clipgrowth_backend.ai.agent;
 import org.springframework.stereotype.Component;
 
 @Component
-public class HookGenerationAgent implements AiAgent {
+public class ContentAnalysisAgent implements AiAgent {
 
     @Override
     public String getName() {
-        return "hook-generation";
+        return "content-analysis";
     }
 
     @Override
     public AgentResult execute(AgentTask task) {
         return new AgentResult(
                 true,
-                task.input() + "\nHook generation completed"
+                task.input() + "\nContent analysis completed"
         );
     }
 }

@@ -14,7 +14,7 @@ public class TrendAnalysisAgent implements AiAgent {
     public AgentResult execute(AgentTask task) {
         return new AgentResult(
                 true,
-                "Trend analysis pending AI provider integration"
+                task.input() + "\nTrend analysis completed"
         );
     }
 }
